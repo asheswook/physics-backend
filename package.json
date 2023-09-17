@@ -41,7 +41,7 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.39",
     "mongoose": "^6.0.8",
-    "node-fetch": "^2.6.5",
+    "node-fetch": "^3.3.2",
     "nodemon": "^2.0.13",
     "path": "^0.12.7",
     "request-ip": "^2.1.3",
