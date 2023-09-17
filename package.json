@@ -31,7 +31,7 @@
     "crypto": "^1.0.1",
     "dayjs": "^1.10.7",
     "discord-webhook-node": "^1.1.8",
-    "discord-webhook-ts": "^1.0.2",
+    "discord-webhook-ts": "^5.0.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-bearer-token": "^2.4.0",
