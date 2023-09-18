@@ -22,15 +22,18 @@ export const searchOrder = async (req: Request, res: Response, next: NextFunctio
       return res.json({ code: 200, orders: orders });
     }
 
-    const endOrders: IOrder[] = await Order.find(Object.assign({}, mongoQuery, { status: { $in: ["SERVED", "COOKED"] } }))
+    const endOrders: IOrder[] = await Order.find(Object.assign({}, mongoQuery, { status: { $in: ["SERVED"] } }))
+      .populate("menu")
+      .sort({ createdAt: -1 });
+    const cookedOrders: IOrder[] = await Order.find(Object.assign({}, mongoQuery, { status: { $in: ["COOKED"] } }))
       .populate("menu")
       .sort({ createdAt: -1 });
     const curOrders: IOrder[] = await Order.find(Object.assign({}, mongoQuery, { status: { $in: ["COOKING", "ORDERED"] } }))
       .populate("menu")
       .sort({ createdAt: -1 });
-    if (!endOrders || !curOrders) return next(new HttpException(400, "NO_ORDER"));
+    if (!endOrders || !curOrders || !cookedOrders) return next(new HttpException(400, "NO_ORDER"));
 
-    return res.json({ code: 200, endOrders: endOrders, curOrders: curOrders });
+    return res.json({ code: 200, endOrders: endOrders, curOrders: curOrders, cookedOrders: cookedOrders });
   } catch (err) {
     console.log(err);
     return next(new HttpException(400, "BAD_REQUEST"));
