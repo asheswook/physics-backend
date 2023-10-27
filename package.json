@@ -20,7 +20,7 @@
     "@types/mongodb": "^3.6.20",
     "@types/node": "^16.10.2",
     "aws-sdk": "^2.1290.0",
-    "axios": "^0.21.4",
+    "axios": "^1.6.0",
     "backblaze-b2": "^1.7.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
